@@ -1,0 +1,177 @@
+* {
+    padding   : 0;
+    margin    : 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --dark-color  : #264653;
+    --cyan-color  : #2A9D8F;
+    --yellow-color: #E9C46A;
+    --orange-color: #F4A261;
+    --red-color   : #E76F51;
+    --blue-color  : #0096c7;
+}
+
+.game {
+    height         : 100vh;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    background     : linear-gradient(to right, rgba(255, 255, 255, 0.5) 0 100%), url(./img/Background.webp);
+    flex-direction : column;
+}
+
+.header {
+    margin-bottom: 2rem;
+}
+
+.header h1 {
+    font-size  : 2rem;
+    font-weight: 200;
+    color      : var(--dark-color);
+}
+
+.interface {
+    display       : flex;
+    flex-direction: column;
+}
+
+.controlbar {
+    display        : flex;
+    width          : 100%;
+    justify-content: space-between;
+    font-size      : 1.25rem;
+    color          : var(--dark-color);
+    padding        : 0.25rem 0.5rem;
+}
+
+.reset{
+    cursor: pointer;
+}
+.controlbar .fa-star {
+    color: gold;
+}
+
+.cards {
+    background           : linear-gradient(215deg, var(--orange-color), var(--yellow-color), var(--red-color));
+    display              : grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap                  : 2rem;
+    padding              : 2rem;
+    border-radius        : 0.5rem;
+    box-shadow           : 4px 4px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    padding         : 2.75rem;
+    background-color: var(--dark-color);
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    border-radius  : 0.5rem;
+    box-shadow     : 3px 3px 4px 3px rgba(116, 104, 104, 0.2);
+    cursor         : pointer;
+}
+
+.card .fa-solid {
+    color    : var(--dark-color);
+    font-size: 2rem; 
+}
+
+.cards .open > .fa-solid{
+    color    : white;
+}
+
+.cards .open{
+    position: relative;
+    background-color: var(--blue-color);
+    animation: wobble 500ms ease;
+}
+
+@keyframes wobble {
+    0% {}
+    20% {transform: translateX(-15px) rotateZ(-2deg);}
+    40% {transform: translateX(15px) rotateZ(2deg);}
+    80% {transform: translateX(-7px) rotateZ(-1deg);}
+    100% {transform: translateX(7px) rotateZ(1deg);}
+}
+
+.cards .matched{
+    background-color: var(--cyan-color);
+    animation: enlarge 500ms ease;
+}
+
+@keyframes enlarge {
+    0% {}
+    50% {transform: scaleX(0.8) scaleY(0.6);}
+}
+
+.result{
+    position: absolute;
+    z-index: 1;
+    top: -100px;
+    left: 32.5vw;
+    box-shadow:  0 15px 40px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 35vw;
+    height: 40vh;
+    background-color: white;
+    outline: rgba(0, 0, 0, 0.5) 1000px solid;
+    border-radius: 0.5em;
+
+    animation: popup 500ms ease forwards;
+}
+
+@keyframes popup {
+    0% {opacity : 0}
+    70% {transform: translateY(42vh); opacity: 1;}
+    100% {transform: translateY(37vh);}
+}
+   
+
+.icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon .fa-solid{ 
+    font-weight: 100;
+    font-size: 3.5rem;
+    color: green;
+    padding-top: 0.25em;
+}
+.score__card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.greeting{
+    margin: 0em auto;
+    padding: 0.5em 0;
+}
+.greeting > h2{
+    font-weight: 250;
+    letter-spacing: 0.075em;
+}
+.final__result{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 1em;
+}
+.final__result > p{
+    padding: 0.06em 0;
+}
+
+.close_button > button{
+    color: white;
+    background-color: var(--red-color);
+    padding: 0.5em 1.5em;
+    border: var(--orange-color) 0.2rem solid;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
